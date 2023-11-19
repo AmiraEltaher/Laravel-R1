@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExampleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,7 +77,6 @@ Route::prefix('product')->group(function () {
         return 'projector  page';
     });
 });
-*/
 
 
 //Task 2//
@@ -120,6 +120,45 @@ Route::prefix('training')->group(function () {
     Route::get('logistics', function () {
         return 'logistics  page';
     });
+});*/
+
+Route::get('cv', function () {
+    return view('cv');
 });
 
-//comment
+Route::get('login', function () {
+    return view('login');
+});
+
+Route::post('recieve', function () {
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $email = $_POST["email"];
+        return 'Your email address is: ' . $email;
+    }
+})->name('recieve');
+
+Route::get('test1', [ExampleController::class, 'test1']);
+
+
+//********* Task 3 **********//
+Route::post('add', function () {
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $title = $_POST["title"];
+        $price = $_POST["price"];
+        $desribe = $_POST["desribe"];
+        $publish = $_POST["remember"];
+        if ($publish) {
+            $published = "published";
+        } else {
+            $published = "NOT published";
+        }
+
+
+        return 'Car title is: ' . $title . "<br>" . "Car Price is: " . $price . "<br>" . "Describtion: " . $desribe . "<br>" . $published;
+    }
+})->name('add');
+
+
+
+Route::get('addCar', [ExampleController::class, 'car']);
