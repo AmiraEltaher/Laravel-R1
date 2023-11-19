@@ -141,7 +141,7 @@ Route::post('recieve', function () {
 Route::get('test1', [ExampleController::class, 'test1']);
 
 
-//********* Task 3 **********//
+/****Task3****/
 Route::post('add', function () {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $title = $_POST["title"];

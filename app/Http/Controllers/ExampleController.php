@@ -11,6 +11,8 @@ class ExampleController extends Controller
     {
         return view("login");
     }
+
+    /****Task3****/
     public function car()
     {
         return view("addCar");
