@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -141,24 +143,35 @@ Route::post('recieve', function () {
 Route::get('test1', [ExampleController::class, 'test1']);
 
 
-/****Task3****/
-Route::post('add', function () {
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $title = $_POST["title"];
-        $price = $_POST["price"];
-        $desribe = $_POST["desribe"];
-        $publish = $_POST["remember"];
-        if ($publish) {
-            $published = "published";
-        } else {
-            $published = "NOT published";
-        }
+//Task3
+// Route::post('add', function () {
+//     if ($_SERVER["REQUEST_METHOD"] === "POST") {
+//         $title = $_POST["title"];
+//         $price = $_POST["price"];
+//         $desribe = $_POST["desribe"];
+//         $publish = $_POST["remember"];
+//         if ($publish) {
+//             $published = "published";
+//         } else {
+//             $published = "NOT published";
+//         }
 
 
-        return 'Car title is: ' . $title . "<br>" . "Car Price is: " . $price . "<br>" . "Describtion: " . $desribe . "<br>" . $published;
-    }
-})->name('add');
+//         return 'Car title is: ' . $title . "<br>" . "Car Price is: " . $price . "<br>" . "Describtion: " . $desribe . "<br>" . $published;
+//     }
+// })->name('add');
 
 
 
 Route::get('addCar', [ExampleController::class, 'car']);
+
+Route::post('received', [ExampleController::class, 'receivedData'])->name('receivedData');
+
+Route::post('addCar', [CarController::class, 'store'])->name('addCar');
+
+//Task4
+//Route::get('addNews', [ExampleController::class, 'addNews']);
+//::post('receivedNews', [ExampleController::class, 'receivedNews'])->name('receivedNews');
+
+Route::get('addNewsForm', [NewsController::class, 'index']);
+Route::post('addNews', [NewsController::class, 'store'])->name('addNews');
