@@ -176,7 +176,13 @@ Route::post('addCar', [CarController::class, 'store'])->name('addCar');
 Route::get('addNewsForm', [NewsController::class, 'index']);
 Route::post('addNews', [NewsController::class, 'store'])->name('addNews');
 
-
+//session5
 Route::get('carList', [CarController::class, 'index']);
 Route::get('editCar/{id}', [CarController::class, 'edit']);
-Route::get('updateCar/{id}', [CarController::class, 'update'])->name('updateCar');
+Route::put('updateCar/{id}', [CarController::class, 'update'])->name('updateCar');
+
+
+//Task-5
+Route::get('newsList', [NewsController::class, 'index']);
+Route::get('editNews/{id}', [NewsController::class, 'edit']);
+Route::put('updateNews/{id}', [NewsController::class, 'update'])->name('updateNews');
