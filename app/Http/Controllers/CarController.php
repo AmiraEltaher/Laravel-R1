@@ -12,7 +12,8 @@ class CarController extends Controller
      */
     public function index()
     {
-        //
+        $cars = Car::get();
+        return view('carsList', compact('cars'));
     }
 
     /**
@@ -53,7 +54,7 @@ class CarController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('editCar');
     }
 
     /**
