@@ -13,7 +13,7 @@
 <body>
 
     <div class="container">
-        <h2>Hover Rows</h2>
+        <h2>Trashed cars</h2>
         <p>The .table-hover class enables a hover state on table rows:</p>
         <table class="table table-hover">
             <thead>
@@ -21,8 +21,7 @@
                     <th>CarTitle</th>
                     <th>Content</th>
                     <th>Published</th>
-                    <th>Edit</th>
-                    <th>Show</th>
+                    <th>Restore</th>
                     <th>Delete</th>
                 </tr>
             </thead>
@@ -38,9 +37,9 @@
                         @else
                         no 😒
                         @endif</td>
-                    <td><a href="editCar/{{$car->id}}">Edit</a></td>
-                    <td><a href="carDetails/{{$car->id}}">Show</a></td>
-                    <td><a href="carDelete/{{$car->id}}">Delete</a></td>
+
+                    <td><a href="restoreCar/{{$car->id}}">Restore</a></td>
+                    <td><a href="fdeleteCar/{{$car->id}}">Delete</a></td>
                 </tr>
                 @endforeach
             </tbody>

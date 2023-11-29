@@ -191,7 +191,13 @@ Route::get('editNews/{id}', [NewsController::class, 'edit']);
 
 //Task 6
 Route::get('carDetails/{id}', [CarController::class, 'show'])->name('carDetails');
+Route::get('carDelete/{id}', [CarController::class, 'destroy'])->name('carDelete');
 
 Route::put('updateNews/{id}', [NewsController::class, 'update'])->name('updateNews');
 Route::get('newsDetails/{id}', [NewsController::class, 'show'])->name('newsDetails');
 Route::get('newsDelete/{id}', [NewsController::class, 'destroy'])->name('newsDelete');
+//session7
+
+Route::get('trashed', [CarController::class, 'trashed']);
+Route::get('restoreCar/{id}', [CarController::class, 'restore']);
+Route::get('fdeleteCar/{id}', [CarController::class, 'delete']);
