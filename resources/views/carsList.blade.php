@@ -22,6 +22,7 @@
                     <th>Content</th>
                     <th>Published</th>
                     <th>Edit</th>
+                    <th>Show</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +38,7 @@
                         no 😒
                         @endif</td>
                     <td><a href="editCar/{{$car->id}}">Edit</a></td>
+                    <td><a href="carDetails/{{$car->id}}">Show</a></td>
                 </tr>
                 @endforeach
             </tbody>

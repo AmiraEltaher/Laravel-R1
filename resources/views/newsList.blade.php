@@ -23,6 +23,8 @@
                     <th>Content</th>
                     <th>Published</th>
                     <th>Edit</th>
+                    <th>Show</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,12 +35,14 @@
                     <td>{{$new->newsTitle}}</td>
                     <td>{{$new->newsAuthor}}</td>
                     <td>{{$new->newsContent}}</td>
-                    <td> @if ($car->published)
+                    <td> @if ($new->published)
                         yes 👌
                         @else
                         no 😒
                         @endif</td>
                     <td><a href="editNews/{{$new->id}}">Edit</a></td>
+                    <td><a href="newsDetails/{{$new->id}}">Show</a></td>
+                    <td><a href="newsDelete/{{$new->id}}">Delete</a></td>
                 </tr>
                 @endforeach
             </tbody>

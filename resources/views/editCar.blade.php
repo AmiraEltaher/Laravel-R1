@@ -14,12 +14,13 @@
 
     <div class="container">
         <h2>Edit Car</h2>
-        <form action="{{route('updateCar')}}" method="POST">
+
+        <form action="{{route('updateCar',$car->id)}}" method="POST">
             @csrf
             @method('put')
             <div class="form-group">
                 <label for="title">Title:</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" value={{}}>
+                <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" value="{{$car->carTitle}}">
             </div>
             <div class="form-group">
                 <label for="price">Price:</label>
@@ -27,13 +28,13 @@
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" rows="5" id="description" name="desribe"></textarea>
+                <textarea class="form-control" rows="5" id="description" name="desribe">{{$car->description}}</textarea>
             </div>
             <div class="checkbox">
                 <input type='hidden' value="0" name="remember">
                 <label><input type="checkbox" name="remember"> Published</label>
             </div>
-            <button type="submit" class="btn btn-default">Add</button>
+            <button type="submit" class="btn btn-default">Edit</button>
         </form>
     </div>
 

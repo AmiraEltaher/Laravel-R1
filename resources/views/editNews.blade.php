@@ -14,7 +14,7 @@
 
     <div class="container">
         <h2>Edit News</h2>
-        <form action="{{route('updateNews', $news->$id)}}" method="POST">
+        <form action="{{route('updateNews', $news->id)}}" method="POST">
             @csrf
             @method('put')
             <div class="form-group">
@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
                 <label for="content">News Content:</label>
-                <textarea class="form-control" rows="5" id="content" name="content">{{$news->newsAuthor}}</textarea>
+                <textarea class="form-control" rows="5" id="content" name="content">{{$news->newsContent}}</textarea>
             </div>
             <div class="checkbox">
                 <input type='hidden' value="0" name="published">

@@ -1,4 +1,3 @@
-/****Task3****/
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +14,7 @@
 
     <div class="container">
         <h2>Add Car</h2>
-        <form action="{{route('receivedData')}}" method="POST">
+        <form action="{{route('addCar')}}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="title">Title:</label>
