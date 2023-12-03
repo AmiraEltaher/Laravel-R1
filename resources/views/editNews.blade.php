@@ -19,19 +19,19 @@
             @method('put')
             <div class="form-group">
                 <label for="title">News Title:</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" value="{{$news->newsTitle}}">
+                <input type="text" class="form-control" id="title" placeholder="Enter title" name="newsTitle" value="{{$news->newsTitle}}">
             </div>
             <div class="form-group">
                 <label for="author">News Author:</label>
-                <input type="text" class="form-control" id="author" placeholder="Enter author" name="author" value="{{$news->newsAuthor}}">
+                <input type="text" class="form-control" id="author" placeholder="Enter author" name="newsAuthor" value="{{$news->newsAuthor}}">
             </div>
             <div class="form-group">
                 <label for="content">News Content:</label>
-                <textarea class="form-control" rows="5" id="content" name="content">{{$news->newsContent}}</textarea>
+                <textarea class="form-control" rows="5" id="content" name="newsContent">{{$news->newsContent}}</textarea>
             </div>
             <div class="checkbox">
                 <input type='hidden' value="0" name="published">
-                <label><input type="checkbox" name="published"> Published</label>
+                <label><input type="checkbox" name="published" @checked($news->published)> Published</label>
             </div>
             <button type="submit" class="btn btn-default">Update</button>
         </form>

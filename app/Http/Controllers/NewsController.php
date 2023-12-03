@@ -36,18 +36,29 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        $news = new News;
-        $news->newsTitle = $request["title"];
-        $news->newsAuthor = $request["author"];
-        $news->newsContent = $request["content"];
+        /*  $news = new News;
+        $news->newsTitle = $request["newsTitle"];
+        $news->newsAuthor = $request["newsAuthor"];
+        $news->newsContent = $request["newsContent"];
         if (isset($request["published"])) {
             $news->published = true;
         } else {
             $news->published = true;
         }
-
         $news->save();
-        return "News added successfully";
+         */
+        $data = $request->only($this->columns);
+        $data['published'] = isset($data['published']) ? true : false;
+
+        $request->validate([
+            'newsTitle' => 'required|string',
+            'newsAuthor' => 'required|string',
+            'newsContent' => 'required|string|max:100',
+
+        ]);
+        News::create($data);
+
+        return redirect('newsList');
     }
 
     /**
@@ -73,9 +84,9 @@ class NewsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
-
-        News::where('id', $id)->update($request->only($this->columns));
+        $data = $request->only($this->columns);
+        $data['published'] = isset($data['published']) ? true : false;
+        News::where('id', $id)->update($data);
 
         return redirect('newsList');
     }
@@ -86,6 +97,23 @@ class NewsController extends Controller
     public function destroy(string $id)
     {
         News::where('id', $id)->delete();
+        return redirect('newsList');
+    }
+
+    public function newsTrashed()
+    {
+        $news = News::onlyTrashed()->get();
+        return view('trashedNews', compact('news'));
+    }
+
+    public function newsRestore(string $id)
+    {
+        News::where('id', $id)->restore();
+        return redirect('newsList');
+    }
+    public function newsForceDelete(string $id)
+    {
+        News::where('id', $id)->forceDelete();
         return ("deleted");
     }
 }

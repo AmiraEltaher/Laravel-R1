@@ -51,7 +51,7 @@ class CarController extends Controller
 
         ]);
         Car::create($data);
-        return "Car data added successfully";
+        return redirect('carList');
     }
 
     /**
@@ -78,8 +78,10 @@ class CarController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $data = $request->only($this->columns);
+        $data['published'] = isset($data['published']) ? true : false;
 
-        Car::where('id', $id)->update($request->only($this->columns));
+        Car::where('id', $id)->update($data);
         return redirect('carList');
     }
 
@@ -89,20 +91,20 @@ class CarController extends Controller
     public function destroy(string $id)
     {
         Car::where('id', $id)->delete();
-        return ("deleted");
+        return redirect('carList');
     }
 
-    public function trashed()
+    public function carTrashed()
     {
         $cars = Car::onlyTrashed()->get();
         return view('trashedCar', compact('cars'));
     }
-    public function restore(string $id)
+    public function carRestore(string $id)
     {
         Car::where('id', $id)->restore();
-        return ("restored");
+        return redirect('carList');
     }
-    public function delete(string $id)
+    public function carForceDelete(string $id)
     {
         Car::where('id', $id)->forceDelete();
         return ("deleted");

@@ -42,7 +42,7 @@
                         @endif</td>
                     <td><a href="editNews/{{$new->id}}">Edit</a></td>
                     <td><a href="newsDetails/{{$new->id}}">Show</a></td>
-                    <td><a href="newsDelete/{{$new->id}}">Delete</a></td>
+                    <td><a href="newsSoftDelete/{{$new->id}}">Delete</a></td>
                 </tr>
                 @endforeach
             </tbody>

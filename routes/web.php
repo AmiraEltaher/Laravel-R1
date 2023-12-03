@@ -195,9 +195,16 @@ Route::get('carDelete/{id}', [CarController::class, 'destroy'])->name('carDelete
 
 Route::put('updateNews/{id}', [NewsController::class, 'update'])->name('updateNews');
 Route::get('newsDetails/{id}', [NewsController::class, 'show'])->name('newsDetails');
-Route::get('newsDelete/{id}', [NewsController::class, 'destroy'])->name('newsDelete');
-//session7
 
-Route::get('trashed', [CarController::class, 'trashed']);
-Route::get('restoreCar/{id}', [CarController::class, 'restore']);
-Route::get('fdeleteCar/{id}', [CarController::class, 'delete']);
+
+//session7
+Route::get('carTrashed', [CarController::class, 'carTrashed']);
+Route::get('restoreCar/{id}', [CarController::class, 'carRestore']);
+Route::get('forecDeleteCar/{id}', [CarController::class, 'carForceDelete']);
+
+
+//Task-7
+Route::get('newsSoftDelete/{id}', [NewsController::class, 'destroy'])->name('newsDelete');
+Route::get('newsTrashed', [NewsController::class, 'newsTrashed'])->name('newsTrashed');
+Route::get('restoreNews/{id}', [NewsController::class, 'newsRestore'])->name('restoreNews');
+Route::get('newsForceDelete/{id}', [NewsController::class, 'newsForceDelete'])->name('newsForceDelete');

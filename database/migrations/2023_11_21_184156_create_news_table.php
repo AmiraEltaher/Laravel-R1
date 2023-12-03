@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('newsAuthor', 100);
             $table->text('newsContent');
             $table->boolean('published');
+            $table->softDeletes();
         });
     }
 

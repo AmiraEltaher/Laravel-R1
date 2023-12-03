@@ -20,19 +20,16 @@
             @method('put')
             <div class="form-group">
                 <label for="title">Title:</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" value="{{$car->carTitle}}">
+                <input type="text" class="form-control" id="title" placeholder="Enter title" name="carTitle" value="{{$car->carTitle}}">
             </div>
-            <div class="form-group">
-                <label for="price">Price:</label>
-                <input type="number" class="form-control" id="price" placeholder="Enter Price" name="price">
-            </div>
+
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" rows="5" id="description" name="desribe">{{$car->description}}</textarea>
+                <textarea class="form-control" rows="5" id="description" name="description">{{$car->description}}</textarea>
             </div>
             <div class="checkbox">
-                <input type='hidden' value="0" name="remember">
-                <label><input type="checkbox" name="remember"> Published</label>
+                <input type='hidden' value="0" name="published">
+                <label><input type="checkbox" name="published" @checked($car->published)> Published</label>
             </div>
             <button type="submit" class="btn btn-default">Edit</button>
         </form>
