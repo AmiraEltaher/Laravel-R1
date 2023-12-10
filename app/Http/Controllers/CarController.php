@@ -41,17 +41,30 @@ class CarController extends Controller
 
         //$cars->save();
 
-        $data = $request->only($this->columns);
-        $data['published'] = isset($data['published']) ? true : false;
+        // $data = $request->only($this->columns);
+        //$data['published'] = isset($data['published']) ? true : false;
+        // $request->validate([
+        //     'carTitle' => 'required|string',
+        //  'description' => 'required|string|max:100',
 
-        $request->validate([
+
+        // ]);
+        // Car::create($data);
+        //return redirect('carList');
+
+        $messages = $this->messages();
+        $data = $request->validate([
             'carTitle' => 'required|string',
-            'description' => 'required|string|max:100',
+            'description' => 'required|string',
+            'image' => 'required|mimes:png,jpg,jpeg|max:2048',
+        ], $messages);
 
-
-        ]);
+        $fileName = $this->uploadFile($request->image, 'assets/images');
+        $data['image'] = $fileName;
+        $data['published'] = isset($request->published);
         Car::create($data);
-        return redirect('carList');
+
+        return 'done';
     }
 
     /**
@@ -108,5 +121,13 @@ class CarController extends Controller
     {
         Car::where('id', $id)->forceDelete();
         return ("deleted");
+    }
+
+    public function messages()
+    {
+        return [
+            'carTitle.required' => 'Title is required',
+            'description.required' => 'should be text',
+        ];
     }
 }

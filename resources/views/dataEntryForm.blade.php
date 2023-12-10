@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Add Car</title>
+    <title>Add Place</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -13,26 +13,27 @@
 <body>
 
     <div class="container">
-        <h2>Add Car</h2>
-        <form action="{{route('addCar')}}" method="POST">
+        <h2>Add Place</h2>
+        <form action="{{route('storePlace')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="title">Title:</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter title" name="carTitle" value="{{old('carTitle')}}">
-                @error('carTitle')
+                <input type="text" class="form-control" id="title" placeholder="Enter title" name="placeTitle" value="{{ old('placeTitle') }}">
+                @error('placeTitle')
                 <div class="alert alert-warning">
-                    {{$message}}
+                    {{ $message }}
                 </div>
                 @enderror
             </div>
-
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" class="form-control" id="price" placeholder="Enter Price" name="price" value="{{ old('price') }}">
+            </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" rows="5" id="description" name="description">{{old('description')}}</textarea>
+                <textarea class="form-control" rows="5" id="description" name="description">{{ old('description') }}</textarea>
                 @error('description')
-                <div class="alert alert-warning">
-                    {{$message}}
-                </div>
+                {{ $message }}
                 @enderror
             </div>
             <div class="form-group">
@@ -43,13 +44,7 @@
                 @enderror
             </div>
             <div class="checkbox">
-                <input type='hidden' value="0" name="published">
                 <label><input type="checkbox" name="published"> Published</label>
-                @error('published')
-                <div class="alert alert-warning">
-                    {{$message}}
-                </div>
-                @enderror
             </div>
             <button type="submit" class="btn btn-default">Add</button>
         </form>

@@ -208,3 +208,7 @@ Route::get('newsSoftDelete/{id}', [NewsController::class, 'destroy'])->name('new
 Route::get('newsTrashed', [NewsController::class, 'newsTrashed'])->name('newsTrashed');
 Route::get('restoreNews/{id}', [NewsController::class, 'newsRestore'])->name('restoreNews');
 Route::get('newsForceDelete/{id}', [NewsController::class, 'newsForceDelete'])->name('newsForceDelete');
+
+
+//Task-9
+Route::get('dataEntryForm', [PlaceController::class, 'create']);
